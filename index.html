@@ -1,79 +1,89 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Bitnami: Open Source. Simplified</title>
-  <link href="bitnami.css" media="all" rel="Stylesheet" type="text/css" /> 
-  <link href="/dashboard/stylesheets/all.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <div class="contain-to-grid">
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="/dashboard/index.html">Apache Friends</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon">
-          <a href="#">
-            <span>Menu</span>
-          </a>
-        </li>
-      </ul>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My PWA</title>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=description content="This web application will work in offline, has a splash screen add to home screen etc,.">
+    <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0288d1">
+    <meta name="msapplication-TileColor" content="#0288d1">
+    <meta name="msapplication-TileImage" content="./images/icons/mstile-150x150.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Progressive Web Application">
+    <meta name="application-name" content="Progressive Web Application">
+    <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./images/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./images/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700">
+    <link rel="stylesheet" href="./css/styles.css">
 
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <li class="active"><a href="/applications.html">Applications</a></li>
-          <li class=""><a href="/dashboard/faq.html">FAQs</a></li>
-          <li class=""><a href="/dashboard/howto.html">HOW-TO Guides</a></li>
-          <li class=""><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
-          <li class=""><a href="/phpmyadmin/">phpMyAdmin</a></li>
-        </ul>
-      </section>
-    </nav>
-  </div>
-  <div id="wrapper">
-    <div class="hero">
-       <div class="row">
-         <div class="large-12 columns">
-            <p>Apache Friends and Bitnami are cooperating to make dozens of open source applications available on XAMPP, for free. Bitnami-packaged applications include Wordpress, Drupal, Joomla! and dozens of others and can be deployed with one-click installers. Visit the <a href="https://bitnami.com/xampp?utm_source=bitnami&utm_medium=installer&utm_campaign=XAMPP%2BModule" target="_blank">Bitnami XAMPP page</a> for details on the currently available apps.</p><br/>
-            <p>Check out our <a href="https://wiki.bitnami.com/Infrastructure_Stacks/Bitnami_for_XAMPP" target="_blank" >Bitnami for XAMPP Start Guide</a> for more information about the applications installed.</p>
-         </div>
-       </div>
-    </div>
-    <div id="lowerContainer" class="row">
-      <div id="content" class="large-12 columns">
-          <!-- @@BITNAMI_MODULE_PLACEHOLDER@@ -->
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="row">
-          <div class="large-8 columns">
-            <ul class="social">
-              <li class="twitter"><a href="https://twitter.com/apachefriends">Follow us on Twitter</a></li>
-              <li class="facebook"><a href="https://www.facebook.com/we.are.xampp">Like us on Facebook</a></li>
-              <li class="google"><a href="https://plus.google.com/+xampp/posts">Add us to your G+ Circles</a></li>
-            </ul>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
 
-            <ul class="inline-list">
-              <li><a href="https://www.apachefriends.org/blog.html">Blog</a></li>
-              <li><a href="https://www.apachefriends.org/privacy_policy.html">Privacy Policy</a></li>
-              <li>
-                <a target="_blank" href="http://www.fastly.com/">                    CDN provided by
-                  <img width="48" data-2x="/dashboard/images/fastly-logo@2x.png" src="/dashboard/images/fastly-logo.png" />
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="large-4 columns">
-            <p class="text-right">Copyright (c) 2015, Apache Friends</p>
-          </div>
-        </div>
-      </div>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+  <body>
+  <div class="app app__layout">
+    <header>
+      <span class="header__icon">
+        <svg class="menu__icon no--select" width="24px" height="24px" viewBox="0 0 48 48" fill="#fff">
+          <path d="M6 36h36v-4H6v4zm0-10h36v-4H6v4zm0-14v4h36v-4H6z"></path>
+        </svg>
+      </span>
+
+      <span class="header__title no--select">Progressive Web Application</span>
+    </header>
+
+    <div class="menu">
+      <div class="menu__header"></div>
+      <ul class="menu__list">
+        <li><a target="_blank" rel="noopener" >Home</a></li>
+        <li><a target="_blank" rel="noopener" >Menu</a></li>
     </div>
-  </footer>
-</body>
+    
+    <my-app>Loading...</my-app>
+
+      <div class="fab fab__push">
+        <div class="fab__ripple"></div>
+        <img class="fab__image" src="./images/push-off.png" alt="Push Notification" />
+      </div>
+      
+      <!-- Toast msg's  -->
+      <div class="toast__container"></div>
+    </div>
+  </div>
+
+  <!-- JS Files  -->
+  <script type="text/javascript">
+  //If serviceWorker supports, then register it.
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
+    .then(function(registration) {
+      console.info('Service worker is registered!');
+    })
+    .catch(function(error) {
+      console.error('Service worker failed ', error);
+    });
+  }
+  </script>
+  <script src="./js/push.js"></script>
+  <script src="./js/toast.js"></script>
+  <!--<script src="./js/offline.js"></script>
+  <script src="./js/app.js"></script>
+  
+  <script src="./js/sync.js"></script>
+  <script src="./js/share.js"></script>
+  <script src="./js/menu.js"></script>-->
+  </body>
 </html>

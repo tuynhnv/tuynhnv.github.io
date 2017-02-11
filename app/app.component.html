@@ -1,0 +1,20 @@
+<h1>Hello Angular Tuynh</h1>
+    <button (click)="getQuiz()">Get Quiz</button>
+<div [hidden]="!getquized">
+    <h2>Đề thi 1</h2>
+    <div class="container">
+        <ul>
+            <li *ngFor="let question of questions"> <strong>{{question.name}}</strong>
+                <ul>
+                    <li *ngFor="let myAnswer of question.answer">    
+                        <input type="radio" name="myAnswer.name" value="myAnswer.name"(click)="question.userAnswer=myAnswer.name" />{{myAnswer.name}}<br>
+                    </li>
+                </ul>
+                <h4 [hidden]="!submitted">Đáp án: {{question.key}}</h4>
+            </li>
+        </ul>
+        <button class="btn" type="submit" (click)="showResult()">Submit</button>
+        <div class="well">
+        <p>Bạn nhận được {{ correctCount }} trên {{questions.length}} câu trả lời đúng</p>
+    </div>
+</div>
