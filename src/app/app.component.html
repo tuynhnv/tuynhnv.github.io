@@ -1,0 +1,50 @@
+
+<nav class="navbar navbar-default">
+    <h3 style="padding-bottom: 20px; padding-left: 30px" class="nav nav-pills" *ngIf="!isLoggedIn">Hệ thống thi trắc nghiệm THPT</h3>
+    <div *ngIf="isLoggedIn">
+
+      <ul class="nav nav-pills navbar-right border-left">
+        <li><a style="text-color: white;">{{afService.displayName }}</a></li>
+      </ul>
+
+      <ul class="nav nav-pills navbar-right ">
+        <li><a style="cursor: pointer; text-color: white;" (click)="logout()">Đăng xuất</a></li>
+      </ul>
+      
+    
+
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']">Trang chủ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" [routerLink]="['/quiz']">Làm bài thi</a>
+      </li>
+
+    
+      <!--<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/grade']">Xem điểm</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/addquestion']">Thêm câu hỏi</a>
+      </li>
+    </ul>
+    </div>
+      
+</nav>
+    
+  
+
+<div class="app-content">
+  <router-outlet></router-outlet>
+</div>

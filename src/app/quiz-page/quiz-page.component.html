@@ -1,0 +1,81 @@
+<div class="section">
+      <div class="container">
+        <div class="row" >
+            <h4 class="text-primary">Chọn đề thi:</h4>
+            <select name="dethi" [(ngModel)]="namequiz" (ngModelChange)="chondethi()"  cols="30" rows="5">
+                <!--<option class="chondethi" value="">Chọn đề thi</option>-->
+                <option class="chondethi" *ngFor="let quiz of quizs | async" [ngValue]="quiz.name" >{{quiz.name}}</option>             
+            </select>
+            
+        </div>
+    
+        <div class="row" *ngIf="selectquiz">
+          <div class="col-md-4" *ngFor="let dethi of dethi | async">
+            <h3 class="text-primary">Đề thi {{dethi.name}}</h3>
+            <h4>Tổng số câu hỏi: {{dethi.totalquestion}}</h4>
+            <h4>Số câu đã trả lời: </h4>
+            <h4>Thời gian:  <button >  {{timerService.displayTime}}</button> </h4>
+             <!--<h4 [(ngModel)]= "timedethi" [ngValue] = "dethi.time" >{{dethi.time}}</h4> -->
+                
+            
+            <div [hidden]="lambaithied"><a  class="btn btn-primary" (click)='lambaithi()'>Làm bài thi</a></div>
+          </div>
+        </div>
+        <div [hidden]="!lambaithied" class="row">
+             <div class="panel panel-primary">
+                 <div class="panel-heading">
+                    <h4> Bảng trả lời </h4>
+                </div>
+                <div class="table-answered" *ngFor="let question of questiones; let index = index;">
+                    <div class="{{ question.isAnswer == true ? 'answered': 'not-answered' }}"><span>{{index + 1}}. {{question.userAnswer}}</span>
+                    </div>
+                </div>
+            </div>
+                    <form class="form-quiz" (submit)="nopbai()">
+                        <div class="panel panel-primary" *ngFor="let question of questiones | paginate: {itemsPerPage: 1, currentPage:page}; let i=index">
+                                <div class="panel-heading">
+                                    <h4> Câu hỏi {{i}}:  {{question.name}}</h4>
+                                </div>
+                                <div class="multiple_question">
+                                    <label class="" >
+                                        <input type="radio" name="question.name" value="question.A"  (click)="question.userAnswer=question.A" (click)="question.isAnswer=true" (click)="question.isAnswered=A"/> A. {{question.A}}
+                                    </label><br>
+                                    <label class="" >
+                                        <input type="radio" name="question.name" value="question.B"  (click)="question.userAnswer=question.B" (click)="question.isAnswer=true" (click)="question.isAnswered=B"/> B. {{question.B}}
+                                    </label><br>
+                                    <label class="" >
+                                        <input type="radio" name="question.name" value="question.C"  (click)="question.userAnswer=question.C" (click)="question.isAnswer=true" (click)="question.isAnswered=C"/> C. {{question.C}}
+                                    </label><br>
+                                    <label class="" >
+                                        <input type="radio" name="question.name" value="question.D"  (click)="question.userAnswer=question.D" (click)="question.isAnswer=true" (click)="question.isAnswered=D"/> D. {{question.D}}
+                                    </label><br>
+    
+
+                                </div>
+                                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                                <!--<div  class="{{ question.isAnswer == true ? 'answered': 'not-answered' }}">{{i}}. {{question.option}}</div>-->
+                                                               
+                        </div>
+                        <p>
+                            <input class="btn btn-primary" type="submit" value= "Nộp bài">
+                            <!--<button class="btn btn-primary" (click)="xemlai()">Xem lại</button>-->
+                        </p>
+                   </form>
+               
+      </div>
+
+      <!--<div class="row" *ngIf="review">
+            <div class="col-sm-4" *ngFor="let question of questions; let index = index;">
+            <div (click)="goTo(index)" class="{{ question.isAnswer == true ? 'answered': 'not-answered' }}">{{index + 1}}. {{question.isAnswer}}</div>
+            </div>
+      </div>-->
+
+      <div [hidden]="!result" class="row">
+          <h3 class="text-primary" *ngFor="let dethi of dethi | async">Kết quả đề thi {{dethi.name}}</h3>
+          <h4>Tổng số câu hỏi: {{questiones.length}}</h4>
+          <h4>Số câu trả lời đúng: {{correctCount}}</h4>
+          <h4>Bạn nhận được số điểm là: {{grade.mark}}</h4>
+      </div>
+
+      
+</div>
